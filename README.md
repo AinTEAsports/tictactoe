@@ -3,7 +3,9 @@ A terminal Tic Tac Toe, project for school
 
 
 Author : AinTea#0519
+
 Name : TicTacToe project
+
 Scope : Secret Defense (yes I know i watched too much Hollywood films)
 
 
