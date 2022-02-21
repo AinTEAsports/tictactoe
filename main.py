@@ -1,30 +1,49 @@
 from playerClass import Player
 
 
-# Function to print grill
-def printGrille(grilleDict : dict):
-    print(f"{grilleDict[1]} | {grilleDict[2]} | {grilleDict[3]}")
-    print(f"{grilleDict[4]} | {grilleDict[5]} | {grilleDict[6]}")
-    print(f"{grilleDict[7]} | {grilleDict[8]} | {grilleDict[9]}")
+def displayGrill(grillDict : dict):
+    """Function to print grill
+
+    Args:
+        grillDict (dict): The dictionnary we'll use for displaying grill
+    """
+    print(f"{grillDict[1]} | {grillDict[2]} | {grillDict[3]}")
+    print(f"{grillDict[4]} | {grillDict[5]} | {grillDict[6]}")
+    print(f"{grillDict[7]} | {grillDict[8]} | {grillDict[9]}")
 
 
-# Function to know if grill is full
-def isGrilleFull(grilleDict : dict):
-    for key in grilleDict.keys():
-        if grilleDict[key] == str(key):
+def isGrillFull(grillDict : dict):
+    """Function to know if grill is full
+
+    Args:
+        grillDict (dict): grill we'll return if it's full
+
+    Returns:
+        bool: returns if grill is full or no
+    """
+    for key in grillDict.keys():
+        if grillDict[key] == str(key):
             return False
     
     return True
 
 
-# Function to know if a box is occupied or no
-def isOccupied(grilleDict : dict, case):
-    return grilleDict[int(case)] != str(case)
+def isOccupied(grillDict : dict, case : int):
+    """Function to know if a box is occupied or no
+
+    Args:
+        grillDict (dict): the grill in which there are the box that we'll verify it's ocuppied
+        case (int): the index case we'll verify it's occupied or no
+
+    Returns:
+        bool: returns if a box is occupied or no
+    """
+    return grillDict[int(case)] != str(case)
 
 
 
 # Creating grill
-grille = {
+grill = {
     1 : "1",
     2 : "2",
     3 : "3",
@@ -46,23 +65,25 @@ player2 = Player("O")
 
 # While none of players has winning combination we continue the game
 while not player1.isWinner() or player2.isWinner():
-    # Printing grill and players signs
+    # Displaying grill and players signs
     print("\n" * 30)
     print(f"Player 1 : {player1.getSign()}")
     print(f"Player 2 : {player2.getSign()}\n\n")
-    printGrille(grille)
+    displayGrill(grill)
     
     
     
     
-    # Player 1 turn
+    # -----------------
+    # | Player 1 turn |
+    # -----------------
 
     # Asking him to enter the box number in which box he wants to put his sign
     player1play = input("\nPlayer 1 enter a number : ")
     
     # Verification if what he entered is valid
-    while player1play not in [str(i) for i in range(1, 10)] or isOccupied(grille, player1play):
-        print("\n# Entrez un nombre valide #\n")
+    while player1play not in [str(i) for i in range(1, 10)] or isOccupied(grill, player1play):
+        print("\n# Enter a valid number ! #\n")
         player1play = input("\nPlayer 1 enter a number : ")
 
 
@@ -70,29 +91,31 @@ while not player1.isWinner() or player2.isWinner():
     player1.plays.append(player1play)
     
     # Putting his sign into the box
-    grille[int(player1play)] = player1.getSign()
+    grill[int(player1play)] = player1.getSign()
     
     # If he has a winning combination, we stop the game
     if player1.isWinner():
         print("\n/// PLAYER 1 WINS ! ///\n")
-        printGrille(grille)
+        displayGrill(grill)
         break
     
     
     # If grill is full we stop the game
-    if isGrilleFull(grille):
+    if isGrillFull(grill):
         print("\n/// TIE ! ///\n")
         break
 
 
 
-    # Player 2 turn
+    # -----------------
+    # | Player 2 turn |
+    # -----------------
     
-    # On affiche la grille et les infos des joueurs
+    # Displaying grill and players signs
     print("\n" * 30)
     print(f"Player 1 : {player1.getSign()}")
     print(f"Player 2 : {player2.getSign()}\n\n")
-    printGrille(grille)
+    displayGrill(grill)
     
     
     
@@ -101,8 +124,8 @@ while not player1.isWinner() or player2.isWinner():
     player2play = input("\nPlayer 2 enter a number : ")
     
     # Verification if what he entered is valid
-    while player2play not in [str(i) for i in range(1, 10)] or isOccupied(grille, player2play):
-        print("\n# Entrez un nombre valide #\n")
+    while player2play not in [str(i) for i in range(1, 10)] or isOccupied(grill, player2play):
+        print("\n# Enter a valid number #\n")
         player2play = input("\nPlayer 2 enter a number : ")
         
     
@@ -110,19 +133,19 @@ while not player1.isWinner() or player2.isWinner():
     player2.plays.append(player2play)
     
     # Putting his sign into the box
-    grille[int(player2play)] = player2.getSign()
+    grill[int(player2play)] = player2.getSign()
     
     # If he has a winning combination, we stop the game
     if player2.isWinner():
         print("\n/// PLAYER 2 WINS ! ///\n")
-        printGrille(grille)
+        displayGrill(grill)
         break
 
 
     # If grill is full we stop the game
-    if isGrilleFull(grille):
+    if isGrillFull(grill):
         print("\n/// TIE ! ///\n")
         break
 
 
-print("\n\n/// END OF THE GAME ///\n")
+print("\n/// END OF THE GAME ///\n")
