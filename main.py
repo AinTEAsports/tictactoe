@@ -1,6 +1,14 @@
 from playerClass import Player
 
 
+# ASCII art because we're h@ck€rZ
+print("""  _______         ______              ______         
+ /_  __(_)____   /_  __/___ ______   /_  __/___  ___ 
+  / / / / ___/    / / / __ `/ ___/    / / / __ \/ _ \\
+ / / / / /__     / / / /_/ / /__     / / / /_/ /  __/
+/_/ /_/\___/    /_/  \__,_/\___/    /_/  \____/\___/""")
+
+
 def displayGrill(grillDict : dict):
     """Function to print grill
 
