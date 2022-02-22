@@ -126,25 +126,25 @@ while not player1.isWinner() or player2.isWinner():
     print(f"Player 1 : {player1.getSign()}")
     print(f"Player 2 : {player2.getSign()}\n\n")
     displayGrill(grill)
-    
-    
-    
-    
+
+
+
+
     # Asking him to enter the box number in which box he wants to put his sign
     player2play = input("\nPlayer 2 enter a number : ")
-    
+
     # Verification if what he entered is valid
     while player2play not in [str(i) for i in range(1, 10)] or isOccupied(grill, player2play):
         print("\n# Enter a valid number #\n")
         player2play = input("\nPlayer 2 enter a number : ")
-        
-    
+
+
     # Adding what he choose to his plays list
     player2.plays.append(player2play)
-    
+
     # Putting his sign into the box
     grill[int(player2play)] = player2.getSign()
-    
+
     # If he has a winning combination, we stop the game
     if player2.isWinner():
         print("\n/// PLAYER 2 WINS ! ///\n")
