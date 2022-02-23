@@ -1,14 +1,19 @@
+import termcolor
 from playerClass import Player
 
 
 # ASCII art because we're h@ck€rZ
-print("""
+asciiText = """
   _______         ______              ______         
  /_  __(_)____   /_  __/___ ______   /_  __/___  ___ 
   / / / / ___/    / / / __ `/ ___/    / / / __ \/ _ \\
  / / / / /__     / / / /_/ / /__     / / / /_/ /  __/
 /_/ /_/\___/    /_/  \__,_/\___/    /_/  \____/\___/
-""")
+"""
+
+asciiTextColored = termcolor.colored(asciiText, 'green')
+
+print(asciiTextColored)
 
 
 def displayGrill(grillDict : dict):
@@ -120,7 +125,7 @@ while not player1.isWinner() or player2.isWinner():
     # -----------------
     # | Player 2 turn |
     # -----------------
-    
+
     # Displaying grill and players signs
     print("\n" * 30)
     print(f"Player 1 : {player1.getSign()}")
